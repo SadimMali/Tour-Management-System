@@ -12,10 +12,10 @@ export default function EmptyCart() {
           className="object-cover"
           alt="Empty cart illustration"
         />
-        <h1 className="font-serif font-semibold text-xl lg:text-2xl mt-4">
+        <h1 className="font-semibold text-xl lg:text-2xl mt-4">
           No activities in Cart
         </h1>
-        <p className="font-serif font-semibold lg:text-lg mt-2">
+        <p className="font-semibold lg:text-lg mt-2">
           Activities you add to your cart stay here for up to 30 minutes.
         </p>
         <button className="mt-4 px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
