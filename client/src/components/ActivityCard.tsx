@@ -2,7 +2,21 @@ import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Heart } from "lucide-react";
 
-export default function ActivityCard({ img }: { img: string }) {
+type ActivityCardProps = {
+  img: string;
+  categoryLabel: string;
+  title: string;
+  metadata: string[];
+  price: string;
+};
+
+export default function ActivityCard({
+  img,
+  categoryLabel,
+  title,
+  metadata,
+  price,
+}: ActivityCardProps) {
   return (
     <Card className="flex gap-0 w-full max-w-2xl overflow-hidden rounded shadow-md py-0 group cursor-pointer">
       {/* Image Section  */}
@@ -23,13 +37,18 @@ export default function ActivityCard({ img }: { img: string }) {
       </div>
 
       {/* Content Section*/}
-      <CardContent className="w-full px-2 py-1 flex flex-col justify-center">
-        <h3 className="text-xl font-semibold mb-2">Mountain Hike</h3>
-        <p className="text-gray-600 mb-3">
-          Explore the breathtaking trails of the Himalayas with our guided
-          mountain hike tour.
+      <CardContent className="w-full px-3 py-2 flex flex-col justify-center">
+        <span className="text-sm font-semibold mb-2 uppercase text-gray-500">
+          {categoryLabel}
+        </span>
+        <h4 className="text-md font-semibold">{title}</h4>
+        <p className="text-gray-600 mb-2 mt-1 text-xs font-semibold">
+          {metadata[0]}
         </p>
-        <span className="text-sm font-medium text-blue-600">Starts at $49</span>
+        <span className="text-sm font-medium">From</span>
+        <span className="text-sm font-medium">
+          <span className="font-semibold">Rs {price}</span> per person
+        </span>
       </CardContent>
     </Card>
   );
