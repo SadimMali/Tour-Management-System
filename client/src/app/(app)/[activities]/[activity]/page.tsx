@@ -1,11 +1,13 @@
+"use client";
+
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
-import StarRating from "@/components/StartRating";
+import StarRating from "@/components/StarRating";
 import { Heart, Share } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 
-export default function ActivityPage() {
-  const tour = {
+
+const tour = {
     id: "b8a74c19-2d42-4e1b-b3c6-b4d4fc2dcd87",
     title: "Everest Base Camp Trek",
     slug: "everest-base-camp-trek",
@@ -80,8 +82,8 @@ export default function ActivityPage() {
     ],
   };
 
+export default function ActivityPage() {
   return (
-    <div>
       <MaxWidthWrapper>
         <div className="flex flex-col-reverse md:flex-col ">
           <div>
@@ -98,13 +100,21 @@ export default function ActivityPage() {
 
               {/* actions */}
               <div className="hidden md:flex gap-2 items-center ">
-                <button className="flex items-center align-center gap-2">
+                <button className="flex items-center gap-2 cursor-pointer">
                   <Heart width={20} height={20} />
                   <span className="ml-2 text-md underline">
                     Add to Favorites
                   </span>
                 </button>
-                <button className="flex items-center align-center gap-2">
+
+                {/* copy link  */}
+                <button
+                  className="flex items-center gap-2 cursor-pointer"
+                  onClick={() =>
+                    navigator.clipboard.writeText(window.location.href)
+                    //TODO: show toast notification
+                  }
+                >
                   <Share width={20} height={20} className="ml-2" />
                   <span className="ml-2 underline">Share</span>
                 </button>
@@ -113,19 +123,19 @@ export default function ActivityPage() {
           </div>
 
           {/* images  */}
-          <div className="hidden  md:grid grid-cols-4 grid-rows-2 gap-2 mt-4 min-h-80">
+          <div className="hidden md:grid grid-cols-4 grid-rows-2 gap-2 mt-4 min-h-80">
             {tour.images[0] && (
-              <div className="col-span-2 row-span-2 relative">
+              <div className="col-span-2 row-span-2 relative h-full">
                 <Image
                   fill
                   src={tour.images[0]}
                   alt="Tour image 1"
-                  className="w-full h-64 object-cover rounded-lg"
+                  className="w-full h-full object-cover rounded-lg"
                 />
               </div>
             )}
             {tour.images[1] && (
-              <div className="col-span-1 row-span-2 relative">
+              <div className="col-span-2 row-span-2 relative">
                 <Image
                   fill
                   src={tour.images[1]}
@@ -157,22 +167,20 @@ export default function ActivityPage() {
           </div>
 
           {/* mobile image carousel */}
-          <div className="md:hidden">
+          <div className="md:hidden min-h-64 relative">
             <Image
+            fill
               src={tour.images[0]}
               alt="Tour image 1"
-              width={500}
-              height={300}
               className="w-full h-64 object-cover rounded-lg"
             />
           </div>
         </div>
-        
+
         {/* description */}
         <div>
           <p className="mt-4 text-gray-700">{tour.description}</p>
         </div>
       </MaxWidthWrapper>
-    </div>
   );
 }
