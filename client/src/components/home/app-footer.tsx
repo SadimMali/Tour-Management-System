@@ -1,4 +1,3 @@
-"use client";
 
 import {
   Facebook,
@@ -6,20 +5,21 @@ import {
   Instagram,
   Linkedin,
   Github,
-  Mail,
 } from "lucide-react";
 // import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
+import bgFooter from "../../../public/bg-footer.png";
 
 export function Footer() {
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Add your newsletter subscription logic here
-  };
+ 
 
   return (
-    <footer className="bg-background border-t mt-10">
-      <div className="container px-6 py-12 mx-auto">
+
+    <footer className="relative border-t mt-10 bg-blue-950 text-white" style={{ backgroundImage: `url(${bgFooter.src})`, backgroundSize: 'cover' }}>
+      {/* overlay */}
+      <div className="bg-black/40 w-full h-full absolute z-0"></div>
+      
+      <div className="container px-6 py-12 mx-auto relative z-10">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {/* Company Info */}
           <div className="space-y-4">
@@ -138,7 +138,7 @@ export function Footer() {
             <p className="text-sm text-muted-foreground">
               Subscribe to our newsletter for updates and exclusive offers.
             </p>
-            <form onSubmit={handleSubscribe} className="space-y-2">
+            <form  className="space-y-2">
               <div className="flex space-x-2">
                 {/* <Input
                   type="email"
