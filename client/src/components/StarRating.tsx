@@ -1,5 +1,5 @@
 // components/StarRating.tsx
-import { Star, StarOff } from 'lucide-react';
+import { Star } from 'lucide-react';
 import React from 'react';
 
 interface StarRatingProps {
@@ -39,9 +39,7 @@ const StarRating: React.FC<StarRatingProps> = ({ rating }) => {
           />
         </svg>
       );
-    } else {
-      stars.push(<StarOff key={i} className="text-gray-300 w-5 h-5" />);
-    }
+    } 
   }
 
   return <div className="flex items-center gap-1">{stars}</div>;
