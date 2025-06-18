@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Heart } from "lucide-react";
+import StarRating from "./StarRating";
 
 type ActivityCardProps = {
   img: string;
@@ -45,6 +46,7 @@ export default function ActivityCard({
         <p className="text-gray-600 mb-2 mt-1 text-xs font-semibold">
           {metadata[0]}
         </p>
+        <StarRating rating={4.8} />
         <span className="text-sm font-medium">From</span>
         <span className="text-sm font-medium">
           <span className="font-semibold">Rs {price}</span> per person
